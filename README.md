@@ -73,7 +73,9 @@ This stage of modelling is very much an extension of the preparation/exploratory
 
 ## Contents of Repository
 -	Read.me File
--	Python/JuypterNotebook File
--	HTML copy of notebook file
+-	Python/JuypterNotebook File for Intial Code
+-	Python/JupyterNotebook File for Final Code
+-	HTML copies of both Intial & Final notebook files
 -	Dataset in Excel(.xls) format
+-	Results in Excel (.xlsx) format
 -	Image Folder
