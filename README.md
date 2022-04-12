@@ -11,7 +11,7 @@ The main research question that this project seeks to answer is: Which current a
 
 The themes that this project deals with are regression and predictive analytics. The methods that I propose to compare include: multiple linear regression (baseline), random forests, gradient boosting and artificial neural network.  Prior to model comparison, a process of feature selection will likely be necessary using techniques such lasso regression.  
 
-The main tools that will be used for the project will be Python along with their various libraries such as glmnet, pandas, sci-kit learn, and XGBoost.
+The main tools that will be used for the project will be Python along with their various libraries such as pandas, sci-kit learn, XGBoost and Keras.
 
 ## Data Understanding
 ### Data Set
