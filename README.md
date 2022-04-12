@@ -54,7 +54,7 @@ As a result of the exploratory phase, it became clear that a few additional step
 - Total SF,Heating QC,Garage Finish, Overall Qual,Overall Cond,Central Air, Year Built,Kitchen Qual,Neighborhood(15),Garage Area,Exter Qual,Foundation (3),Year Remod/Add,BsmtFin SF 1,Sale Condition_Abnormal,Mas Vnr Area,Sale Type_New,Full Bath,Sale Condition_Family,Exterior 1st_BrkFace,Bsmt Qual,Exterior 1st_AsbShng,Condition 1_PosN,Lot Area		
 
 
-## Initial Multiple Linear Regression Model & Lasso Regularized Regression
+## Preliminary Models
 This stage of modelling is very much an extension of the preparation/exploratory phase of the project.  It is mainly undertaken in order to test the viability of running models on the data and testing feature selection.
 -	Discovered that a basic multiple linear model with all 81 features was not feasible as it did not result in a viable predictive model
 -	Preliminary base multiple linear regression model using a set of 16 basic features
@@ -62,7 +62,7 @@ This stage of modelling is very much an extension of the preparation/exploratory
 -	Preliminary multiple linear regression model with features selected by Lasso regression selector
 
 ## Main Modelling
-1.-Multiple Linear Regression
+### 1.-Multiple Linear Regression
 The multiple linear regression model was included here so as to have a linear model that uses the same feature set as all other models.  This actually proved somewhat problematic.  When some slightly larger feature sets were used, the multiple linear model again broke as it did when all features were included.  However, the linear model performs extremely well with the feature set that was settled upon.  Indeed, it is somewhat surprisingly one of the top performing models finishing marginally behind Lasso Regression in terms of model effectiveness while clearly outperforming in terms of efficiency.  Although there are, in fact, stability issues with the linear model, in the case of this particular feature set, there was no large difference as the number of k folds was changed during cross-validation.
 
 |Metrics        |K10|
@@ -74,7 +74,7 @@ The multiple linear regression model was included here so as to have a linear mo
 |RMSE CV Test   |0.10596 |
 |RMSE CV Test   |0.113837|
 
-2.-Lasso Multiple Regression
+### 2.-Lasso Multiple Regression
 The results show that, as expected, Lasso regression is very effective.  In fact, it is the best model in terms of all effectiveness metrics, very narrowly surpassing Multiple Linear Regression.  On the other hand, it performs significantly worse than plain linear regression in terms of time efficiency but this is likely largely down to the cross-validation that is built into the model.  It is also exceedingly stable.
 
 |Metrics        |K10|
@@ -86,7 +86,7 @@ The results show that, as expected, Lasso regression is very effective.  In fact
 |RMSE CV Test   |0.10559|
 |RMSE CV Test   |0.113817|
 
-3.-Decision Tree Regressor
+### 3.-Decision Tree Regressor
 The results demonstrate that the Decision Tree Regressor was the poorest performing model in the study in terms of effectiveness. It managed only 0.1695 RMSE, 0.1267 MAE, and 0.7597 Adjusted R2 on the test data.  The model, though, is quite efficient.  It has one of the lowest time-costs at an average 8.118ms per loop of any of models in the study except for plain Multiple Regression. Though its results were fairly uniform, the Decision Tree Regressor was comparatively one of the more unstable models in terms of results changing as the k increased for cross-validation.
 
 |Metrics        |K10|
@@ -98,7 +98,7 @@ The results demonstrate that the Decision Tree Regressor was the poorest perform
 |RMSE CV Test   |0.169452|
 |RMSE CV Test   |0.154893|
 
-4.-Random Forest Modelling
+### 4.-Random Forest Modelling
 The results of the random forest model were quite good with a RMSE of 0.1241 and a MAE of 0.0885 on the test data.  This performance is not at all terrible and within the range of the best performing models.  Nevertheless, the random forest model was still outperformed by a linear regression model that simply used highly correlated variables.  What was particularly interesting is that the Random Forest Regressor actually underperformed a linear model that used features selected via a random forest selector.  This suggests that the feature selection element of the random forest model was sound, but that regression tree models were perhaps particularly ill-suited to the particular data set.  The results of the random forest were especially disappointing as it is also quite time inefficient.  Random forest was a very stable model only slightly bested by Lasso
 
 |Metrics        |K10|
@@ -110,7 +110,7 @@ The results of the random forest model were quite good with a RMSE of 0.1241 and
 |RMSE CV Test   |0.124122|
 |RMSE CV Test   |0.121109|
 
-5.-Gradient Boost(XPG)
+### 5.-Gradient Boost(XPG)
 XGBoost is one of the best performing models overall.  While it very slightly bested the Multiple Linear Regression and Lasso models on all measures of effectiveness for the training data, it was slightly worse with the actual test data.  Even so, the difference in scores for training and test data was very small indicating that overfitting is not a major problem.  In terms of efficiency, as an ensemble model it did require more time than the Decision Tree Regressor, Lasso, and Multiple Linear Regression models.  Once the number of estimators was reduced, XGBoost did outperform the random forest model.  In terms of stability, the XGBoost model had no significant problems.
 
 |Metrics        |K10|
@@ -122,7 +122,7 @@ XGBoost is one of the best performing models overall.  While it very slightly be
 |RMSE CV Test   |0.112065|
 |RMSE CV Test   |0.111700|
 
-6.-Artificial Neural Network Perceptron(Keras)
+### 6.-Artificial Neural Network Perceptron(Keras)
 The results make clear what had been suspected: an ANN model is not the most appropriate method for the Ames Housing dataset.  The Perceptron was the second worst performing model behind only the Decision Tree Regressor model.  That said its effectiveness results were not terrible and within a reasonable distance of better performing models.  However, the efficiency cost in terms of processing time was by far the highest of any model even using the additional processing power of a graphic processing unit.  It also proved to be the least stable of the models.
 
 |Metrics        |K10|
