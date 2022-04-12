@@ -49,8 +49,10 @@ As a result of the exploratory phase, it became clear that a few additional step
 -	Used Random Forest Regressor via sklearn feature.selection’s SelectFromModel module and tuned hyperparameters.
 -	Created a visualization of the results and examined the 71 features that were selected
 -	Used Lasso Regressor via sklearn feature.selection’s SelectFromModel module and tuned model
--	Created a visualization of the results and examined 20 features that were selected.
--	[Further fine tuning/comparison required]
+-	Created a visualization of the results and examined the more than 60 features that were selected.
+- Create a set of 40 features to serve as main feature set for modelling
+- Total SF,Heating QC,Garage Finish, Overall Qual,Overall Cond,Central Air, Year Built,Kitchen Qual,Neighborhood(15),Garage Area,Exter Qual,Foundation (3),Year Remod/Add,BsmtFin SF 1,Sale Condition_Abnormal,Mas Vnr Area,Sale Type_New,Full Bath,Sale Condition_Family,Exterior 1st_BrkFace,Bsmt Qual,Exterior 1st_AsbShng,Condition 1_PosN,Lot Area		
+
 
 ## Initial Multiple Linear Regression Model & Lasso Regularized Regression
 This stage of modelling is very much an extension of the preparation/exploratory phase of the project.  It is mainly undertaken in order to test the viability of running models on the data and testing feature selection.
@@ -119,6 +121,7 @@ XGBoost is one of the best performing models overall.  While it very slightly be
 |MAE CV Train   |0.08027|
 |RMSE CV Test   |0.112065|
 |RMSE CV Test   |0.111700|
+
 6.-Artificial Neural Network Perceptron(Keras)
 The results make clear what had been suspected: an ANN model is not the most appropriate method for the Ames Housing dataset.  The Perceptron was the second worst performing model behind only the Decision Tree Regressor model.  That said its effectiveness results were not terrible and within a reasonable distance of better performing models.  However, the efficiency cost in terms of processing time was by far the highest of any model even using the additional processing power of a graphic processing unit.  It also proved to be the least stable of the models.
 
